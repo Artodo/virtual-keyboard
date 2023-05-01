@@ -266,6 +266,7 @@ let del = document.createElement('button');
 del.textContent = 'Del';
 del.classList.add('black-button');
 del.classList.add('del');
+del.setAttribute('onclick', "handleDelete(this);");
 divKLTab.append(del);
 
 
@@ -544,7 +545,6 @@ input.focus();
 
 window.addEventListener('load', () => {
   const lang = localStorage.getItem('lang');
-  console.log('lang', lang);
   if (lang) {
     isEnLang = lang === 'en';
     changeLetters();
@@ -554,7 +554,6 @@ window.addEventListener('load', () => {
 });
 
 document.addEventListener('keydown', (event) => {
-  console.log(event.code);
   if (event.shiftKey && event.altKey) {
     changeLanguages();
   } else if (event.shiftKey && !event.altKey) {
@@ -562,22 +561,32 @@ document.addEventListener('keydown', (event) => {
   } else if (event.ctrlKey) {
     hightlightBtn(ctrlL);
     hightlightBtn(ctrlR);
-  } else if (event.code === 'Delete') {
-    hightlightBtn(del);
-  } else if (event.code == 'Backspace') {
-    hightlightBtn(backspace);
-  } else {
-    const btns = Array.from(document.querySelectorAll('button'));
+  }
 
-    const match = btns.find(el => {
-      return el.textContent.includes(event.key);
-    });
+  switch (event.code) {
+    case 'Delete': hightlightBtn(del); break;
+    case 'Space': hightlightBtn(space); break;
+    case 'Backspace': hightlightBtn(backspace); break;
+    case 'AltRight': hightlightBtn(altR); break;
+    case 'AltLeft': hightlightBtn(altL); break;
+    case 'ArrowUp': hightlightBtn(up); break;
+    case 'ArrowDown': hightlightBtn(pgDn); break;
+    case 'ArrowRight': hightlightBtn(end); break;
+    case 'ArrowLeft': hightlightBtn(left); break;
+    case 'MetaLeft': hightlightBtn(win); break;
+    default: {
+      const btns = Array.from(document.querySelectorAll('button'));
 
-    if (match) {
-      if (event.code === 'CapsLock') {
-        toggleCaps();
-      } else {
-        hightlightBtn(match);  
+      const match = btns.find(el => {
+        return el.textContent.includes(event.key);
+      });
+
+      if (match) {
+        if (event.code === 'CapsLock') {
+          toggleCaps();
+        } else {
+          hightlightBtn(match);
+        }
       }
     }
   }
@@ -588,6 +597,11 @@ const addSymbolToInput = (btn) => {
 
   hightlightBtn(btn);
 };
+
+const handleDelete = (btn) => {
+  const event = new KeyboardEvent('keydown', { code: 'Delete' });
+  btn.dispatchEvent(event);
+}
 
 const handleClick = (btn) => {
   let val = input.value;
