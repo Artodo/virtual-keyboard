@@ -1,4 +1,4 @@
-
+let isCaps = false; // если true - текст в upper case
 let section = document.createElement('section');
 section.classList.add('main');
 
@@ -279,6 +279,7 @@ let capsLock = document.createElement('button');
 capsLock.textContent = 'CapsLock';
 capsLock.classList.add('black-button');
 capsLock.classList.add('dig-button');
+capsLock.setAttribute('onclick', "toggleCaps();");
 divKLCL.append(capsLock);
 
 let ф = document.createElement('button');
@@ -551,14 +552,14 @@ document.addEventListener('keydown', (event) => {
 
     if (match) {
       hightlightBtn(match);
-    } 
+    }
   }
 });
 
 
 function addSymbolToInput(btn) {
-  input.value = input.value + btn.textContent;
-  input.focus();
+  input.value = input.value + (isCaps ? btn.textContent.toUpperCase() : btn.textContent);
+
   hightlightBtn(btn);
 };
 
@@ -568,8 +569,6 @@ function handleClick(btn) {
     input.value.substring(0, input.selectionStart) +
     "\n" +
     input.value.substring(input.selectionEnd, input.value.length);
-  input.focus();
-
 
   hightlightBtn(btn);
 }
@@ -579,15 +578,24 @@ function removeSymbol(btn) {
   let val = input.value;
   input.value = val.slice(0, -1);
 
-  input.focus();
-
   hightlightBtn(btn);
 
 }
 
 function hightlightBtn(btn) {
+  input.focus();
   btn.classList.add('active');
   setTimeout(() => {
     btn.classList.remove('active');
   }, 300);
+}
+
+function toggleCaps() {
+  isCaps = !isCaps;
+  hightlightAlwaysBtn(capsLock);
+}
+
+function hightlightAlwaysBtn(btn) {
+  input.focus();
+  btn.classList.toggle('active');
 }
