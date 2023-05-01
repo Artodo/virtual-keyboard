@@ -1,4 +1,5 @@
 let isCaps = false; // если true - текст в upper case
+let enLang = false; 
 let section = document.createElement('section');
 section.classList.add('main');
 
@@ -453,7 +454,7 @@ dot.setAttribute('onclick', "addSymbolToInput(this);");
 divKLShift.append(dot);
 
 let up = document.createElement('button');
-up.textContent = 'PgUp';
+up.textContent = '▲';
 up.classList.add('small-button');
 up.classList.add('black-button');
 divKLShift.append(up);
@@ -503,19 +504,19 @@ altR.classList.add('small-button');
 divKLCtrl.append(altR);
 
 let left = document.createElement('button');
-left.textContent = 'Home';
+left.textContent = '◄';
 left.classList.add('small-button');
 left.classList.add('black-button');
 divKLCtrl.append(left);
 
 let pgDn = document.createElement('button');
-pgDn.textContent = 'PgDn';
+pgDn.textContent = '▼';
 pgDn.classList.add('small-button');
 pgDn.classList.add('black-button');
 divKLCtrl.append(pgDn);
 
 let end = document.createElement('button');
-end.textContent = 'End';
+end.textContent = '►';
 end.classList.add('small-button');
 end.classList.add('black-button');
 end.setAttribute('type', 'button');
@@ -540,6 +541,11 @@ input.focus();
 
 
 document.addEventListener('keydown', (event) => {
+  // console.log(event.shiftKey);
+  // console.log(event.altKey);
+  if(event.shiftKey && event.altKey) {
+    changeLanguages();
+  }
 
   if (event.code == "Backspace") {
     hightlightBtn(backspace);
@@ -598,4 +604,44 @@ function toggleCaps() {
 function hightlightAlwaysBtn(btn) {
   input.focus();
   btn.classList.toggle('active');
+}
+
+function changeLanguages() {
+  enLang = !enLang;
+  ё.textContent = enLang ? '~' : 'ё';
+  й.textContent = enLang ? 'q' : 'й';
+  ц.textContent = enLang ? 'w' : 'ц';
+  у.textContent = enLang ? 'e' : 'у';
+  к.textContent = enLang ? 'r' : 'к';
+  е.textContent = enLang ? 't' : 'е';
+  н.textContent = enLang ? 'y' : 'н';
+  г.textContent = enLang ? 'u' : 'г';
+  ш.textContent = enLang ? 'i' : 'ш';
+  щ.textContent = enLang ? 'o' : 'щ';
+  з.textContent = enLang ? 'p' : 'з';
+  х.textContent = enLang ? '[' : 'х';
+  ъ.textContent = enLang ? ']' : 'ъ';
+
+  ф.textContent = enLang ? 'a' : 'ф';
+  ы.textContent = enLang ? 's' : 'ы';
+  в.textContent = enLang ? 'd' : 'в';
+  а.textContent = enLang ? 'f' : 'а';
+  п.textContent = enLang ? 'g' : 'п';
+  р.textContent = enLang ? 'h' : 'р';
+  о.textContent = enLang ? 'j' : 'о';
+  л.textContent = enLang ? 'k' : 'л';
+  д.textContent = enLang ? 'l' : 'д';
+  ж.textContent = enLang ? ';' : 'ж';
+  э.textContent = enLang ? "'" : 'э';
+
+  я.textContent = enLang ? 'z' : 'я';
+  ч.textContent = enLang ? 'x' : 'ч';
+  с.textContent = enLang ? 'c' : 'с';
+  м.textContent = enLang ? 'v' : 'м';
+  и.textContent = enLang ? 'b' : 'и';
+  т.textContent = enLang ? 'n' : 'т';
+  ь.textContent = enLang ? 'm' : 'ь';
+  б.textContent = enLang ? ',' : 'б';
+  ю.textContent = enLang ? '.' : 'ю';
+  dot.textContent = enLang ? '/' : '.';
 }

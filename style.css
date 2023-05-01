@@ -17,11 +17,6 @@
  border: 3px solid #222222;
 }
 
-#inputBox:focus {
-  background-color: coral;
-}
-
-
 .virtual-keyboard {
   border: 3px solid #222222;
   border-radius: 5px;
@@ -29,7 +24,6 @@
   margin: 0 auto;
   padding-top: 6px;
   background-color: coral;
-  
 }
 
 .keyboard-line {
