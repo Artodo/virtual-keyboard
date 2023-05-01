@@ -17,7 +17,9 @@
  border: 3px solid #222222;
 }
 
-
+#inputBox:focus {
+  background-color: coral;
+}
 
 
 .virtual-keyboard {
@@ -86,4 +88,9 @@
 .black-button {
   background-color: rgb(150, 72, 44);
   color: aliceblue;
+}
+
+.active {
+  border-radius: 50%;
+  background-color: rgb(147, 207, 235);
 }
