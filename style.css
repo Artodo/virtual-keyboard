@@ -1,0 +1,90 @@
+.main {
+  text-align: center; 
+}
+
+.h1 {
+  margin: 16px auto;
+  font-family: "Courier New", Courier, monospace;
+  font-size: 35px;
+  color: rgb(243, 150, 63);
+}
+
+
+#inputBox {
+  font-size: 20px;
+  line-height: 100%;
+ max-width: 710px;
+ border: 3px solid #222222;
+}
+
+.virtual-keyboard {
+  border: 3px solid #222222;
+  border-radius: 5px;
+  max-width: 710px;
+  margin: 0 auto;
+  padding-top: 6px;
+  background-color: coral;
+}
+
+.keyboard-line {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 6px;
+}
+
+.small-button {
+  width: 40px;
+  height: 40px;
+  border-radius: 3px;
+  background-color: rgb(235, 176, 154);
+  color: white;
+}
+
+.dig-button {
+  width: 100px;
+  height: 40px;
+  border-radius: 3px;
+}
+
+
+.tab {
+  width: 50px;
+  height: 40px;
+  border-radius: 3px;
+}
+
+.del {
+  width: 44px;
+  height: 40px;
+  border-radius: 3px;
+}
+
+
+.middle-button {
+  width: 86px;
+  height: 40px;
+  border-radius: 3px;
+}
+
+.space-button {
+  width: 330px;
+  height: 40px;
+  border-radius: 3px;
+  border: 2px solid #222222;
+}
+
+.arrow {
+  width: 20px;
+  height: 20px;
+}
+
+
+.black-button {
+  background-color: rgb(150, 72, 44);
+  color: aliceblue;
+}
+
+.active {
+  border-radius: 50%;
+  background-color: rgb(147, 207, 235);
+}
